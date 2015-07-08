@@ -129,15 +129,15 @@ define( [
 
     };
 
-    var comparisonSymbol = {
-        ref: "props.comparisonSymbol",
-        label: "Comparison symbol",
-        type: "string",
-        expression: "optional",
-        show: function ( data ) {
-            return data.props && data.props.layoutMode === 'custom';
-        }
-    };
+    // var comparisonSymbol = {
+    //     ref: "props.comparisonSymbol",
+    //     label: "Comparison symbol",
+    //     type: "string",
+    //     expression: "optional",
+    //     show: function ( data ) {
+    //         return data.props && data.props.layoutMode === 'custom';
+    //     }
+    // };
 
     // ****************************************************************************************
     // Property Panel Definition

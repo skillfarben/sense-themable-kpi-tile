@@ -66,6 +66,8 @@ define( [
 
                     var padding = 14; // 7 top and bottom
                     var elemHeight = $element.height() - padding;
+                    var hPadding = 2; // 1 left and right
+                    var elemWidth = $element.width() - hPadding;
 
                     // Tile
                     $scope.tileStyle = {
@@ -81,13 +83,13 @@ define( [
                     // KPI
                     $scope.kpiStyle = {
                         color: $scope.get( 'kpiColor' ),
-                        fontSize: Math.max( (elemHeight / 4), 12 ) + 'px',
+                        fontSize: Math.max( (elemWidth / 8), 12 ) + 'px',
                         paddingTop: Math.max( (elemHeight / 10) ) + 'px'
                     };
 
                     // KPI Comparison
                     $scope.kpiComparisonStyle = {
-                        fontSize: Math.max( (elemHeight / 6), 10 ) + 'px',
+                        fontSize: Math.max( (elemWidth / 16)-0.5, 4 ) + 'px',
                         color: getKpiComparisonColor()
                     };
 
