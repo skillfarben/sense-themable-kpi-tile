@@ -90,7 +90,13 @@ define( [
                     // KPI Comparison
                     $scope.kpiComparisonStyle = {
                         fontSize: Math.max( (elemWidth / 16)-0.5, 4 ) + 'px',
-                        color: getKpiComparisonColor()
+                        color: $scope.get( 'comparisonColor' )
+                        // if ( $scope.layout.props.layoutMode === 'custom') {
+                        //   color: $scope.get( 'comparisonColor' );
+                        // } else {
+                        //   color: getKpiComparisonColor();
+                        // }
+
                     };
 
                     // KPI Icon (not a style, but normal binding)
