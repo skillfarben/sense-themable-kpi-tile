@@ -24,6 +24,7 @@ define( [
             controller: ['$scope', '$element', '$sce', function ( $scope, $element, $sce ) {
 
                 console.log( '$scope', $scope );
+                // var kpiIcon='AAA';
 
                 /**
                  * Get either the property value or the default one.
@@ -91,12 +92,7 @@ define( [
                     $scope.kpiComparisonStyle = {
                         fontSize: Math.max( (elemWidth / 16)-0.5, 4 ) + 'px',
                         color: $scope.get( 'comparisonColor' )
-                        // if ( $scope.layout.props.layoutMode === 'custom') {
-                        //   color: $scope.get( 'comparisonColor' );
-                        // } else {
-                        //   color: getKpiComparisonColor();
-                        // }
-
+                        
                     };
 
                     // KPI Icon (not a style, but normal binding)
@@ -121,19 +117,22 @@ define( [
 
                 function setKpiIcon () {
                     //console.log( 'kpiComparison', $scope.layout.props.kpiComparison );
-                    //console.log( '$scope.layout', $scope.layout );
+                    console.log( 'kpiComparison', $scope.layout.props );
+                    console.log( '$scope.layout', $scope.layout );
+                    console.log('$scope', $scope);
 
                     if ( !$scope.layout.props || !$scope.layout.props.layoutMode ) {
                         return '';
                     }
 
-                    if ( $scope.layout.props.kpiComparison > 0 ) {
-                        $scope.kpiIcon = $sce.trustAsHtml( $scope.get( 'comparisonPositiveIcon' ) );
-                    } else if ( $scope.layout.props.kpiComparison < 0 ) {
-                        $scope.kpiIcon = $sce.trustAsHtml( $scope.get( 'comparisonNegativeIcon' ) );
-                    } else {
-                        $scope.kpiIcon = $sce.trustAsHtml( $scope.get( 'comparisonNeutralIcon' ) );
-                    }
+                    // if ( $scope.layout.props.kpiComparison > 0 ) {
+                    //     $scope.kpiIcon = $sce.trustAsHtml( $scope.get( 'comparisonPositiveIcon' ) );
+                    // } else if ( $scope.layout.props.kpiComparison < 0 ) {
+                    //     $scope.kpiIcon = $sce.trustAsHtml( $scope.get( 'comparisonNegativeIcon' ) );
+                    // } else {
+                    //     $scope.kpiIcon = $sce.trustAsHtml( $scope.get( 'comparisonNeutralIcon' ) );
+                    // }
+                    $scope.kpiIcon = $scope.layout.props.comparisonSymbol;
                 }
 
                 $scope.$watch( function () {

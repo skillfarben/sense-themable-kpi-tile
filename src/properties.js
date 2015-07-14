@@ -129,15 +129,16 @@ define( [
 
     };
 
-    // var comparisonSymbol = {
-    //     ref: "props.comparisonSymbol",
-    //     label: "Comparison symbol",
-    //     type: "string",
-    //     expression: "optional",
-    //     show: function ( data ) {
-    //         return data.props && data.props.layoutMode === 'custom';
-    //     }
-    // };
+    var comparisonSymbol = {
+        ref: "props.comparisonSymbol",
+        label: "Comparison symbol",
+        type: "string",
+        expression: "optional",
+        show: function ( data ) {
+            // return data.props && data.props.layoutMode === 'custom';
+            return data.props;
+        }
+    };
 
     // ****************************************************************************************
     // Property Panel Definition
@@ -165,7 +166,8 @@ define( [
                     tileBackgroundColor: tileBackgroundColor,
                     titleColor: titleColor,
                     kpiColor: kpiColor,
-                    comparisonColor: comparisonColor
+                    comparisonColor: comparisonColor,
+                    comparisonSymbol:comparisonSymbol
                 }
             }
         }
