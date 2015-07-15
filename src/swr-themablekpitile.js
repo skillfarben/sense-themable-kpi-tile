@@ -45,7 +45,10 @@ define( [
                         "comparisonNeutralColor": "#333333",
                         "comparisonPositiveIcon": "&#9650;",
                         "comparisonNegativeIcon": "&#9660;",
-                        "comparisonNeutralIcon": "&#9654;"
+                        "comparisonNeutralIcon": "&#9654;",
+                        "titleFontSize": "12px",
+                        "kpiFontSize":"16px",
+                        "comparisonFontSize":"14px"
                     };
 
                     switch ( $scope.layout.props.layoutMode ) {
@@ -78,21 +81,22 @@ define( [
                     // KPI Title
                     $scope.titleStyle = {
                         color: $scope.get( 'titleColor' ),
-                        fontSize: Math.max( (elemHeight / 6), 12 ) + 'px'
+                        // fontSize: $scope.get( 'titleFontSize' ) + 'px'
+                        fontSize: Math.max( Math.min((elemHeight / 6), (elemWidth / 8),$scope.get( 'titleFontSize' )), 12 ) + 'px'
                     };
 
                     // KPI
                     $scope.kpiStyle = {
                         color: $scope.get( 'kpiColor' ),
-                        fontSize: Math.max( (elemWidth / 8), 12 ) + 'px',
+                        fontSize: Math.max( Math.min((elemWidth / 8),(elemHeight / 6),$scope.get( 'kpiFontSize' )), 14 ) + 'px',
                         paddingTop: Math.max( (elemHeight / 10) ) + 'px'
                     };
 
                     // KPI Comparison
                     $scope.kpiComparisonStyle = {
-                        fontSize: Math.max( (elemWidth / 16)-0.5, 4 ) + 'px',
+                        fontSize: Math.max( Math.min((elemWidth / 8)-0.5,(elemHeight / 7),$scope.get( 'comparisonFontSize' )), 6 ) + 'px',
                         color: $scope.get( 'comparisonColor' )
-                        
+
                     };
 
                     // KPI Icon (not a style, but normal binding)

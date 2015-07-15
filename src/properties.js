@@ -107,6 +107,16 @@ define( [
         }
     };
 
+    var titleFontSize = {
+        ref: "props.titleFontSize",
+        label: "Title Font Size",
+        type: "number",
+        expression: "optional",
+        show: function ( data ) {
+            return data.props && data.props.layoutMode === 'custom';
+        }
+    };
+
     var kpiColor = {
         ref: "props.kpiColor",
         label: "KPI color",
@@ -116,6 +126,16 @@ define( [
             return data.props && data.props.layoutMode === 'custom';
         }
 
+    };
+
+    var kpiFontSize = {
+        ref: "props.kpiFontSize",
+        label: "KPI Font Size",
+        type: "number",
+        expression: "optional",
+        show: function ( data ) {
+            return data.props && data.props.layoutMode === 'custom';
+        }
     };
 
     var comparisonColor = {
@@ -137,6 +157,16 @@ define( [
         show: function ( data ) {
             // return data.props && data.props.layoutMode === 'custom';
             return data.props;
+        }
+    };
+
+    var comparisonFontSize = {
+        ref: "props.comparisonFontSize",
+        label: "Comparison Font Size",
+        type: "number",
+        expression: "optional",
+        show: function ( data ) {
+            return data.props && data.props.layoutMode === 'custom';
         }
     };
 
@@ -165,6 +195,9 @@ define( [
                     layoutTemplate: layoutTemplate,
                     tileBackgroundColor: tileBackgroundColor,
                     titleColor: titleColor,
+                    titleFontSize:titleFontSize,
+                    kpiFontSize:kpiFontSize,
+                    comparisonFontSize:comparisonFontSize,
                     kpiColor: kpiColor,
                     comparisonColor: comparisonColor,
                     comparisonSymbol:comparisonSymbol
