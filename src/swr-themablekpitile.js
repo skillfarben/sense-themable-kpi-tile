@@ -82,27 +82,58 @@ define( [
                     $scope.titleStyle = {
                         color: $scope.get( 'titleColor' ),
                         // fontSize: $scope.get( 'titleFontSize' ) + 'px'
-                        fontSize: Math.max( Math.min((elemHeight / 6), (elemWidth / 8),$scope.get( 'titleFontSize' )), 12 ) + 'px'
+                        // fontSize: Math.max( Math.min((elemHeight / 6), (elemWidth / 8),$scope.get( 'titleFontSize' )), 12 ) + 'px'
+                        // fontSize: (elemHeight  * $scope.get( 'titleFontSize' ) / ($scope.get( 'titleFontSize' )+$scope.get( 'kpiFontSize' )+$scope.get( 'comparisonFontSize' )))-3  + 'px'
+                        fontSize: Math.max(Math.floor(elemHeight+elemWidth)/30,8)
                     };
 
                     // KPI
                     $scope.kpiStyle = {
                         color: $scope.get( 'kpiColor' ),
-                        fontSize: Math.max( Math.min((elemWidth / 8),(elemHeight / 6),$scope.get( 'kpiFontSize' )), 14 ) + 'px',
+                        // fontSize: Math.max( Math.min((elemWidth / 8),(elemHeight / 6),$scope.get( 'kpiFontSize' )), 14 ) + 'px',
+                        fontSize: ((elemHeight -(elemHeight / 10)) * $scope.get( 'kpiFontSize' ) / ($scope.get( 'titleFontSize' )+$scope.get( 'kpiFontSize' )+$scope.get( 'comparisonFontSize' )))-3 + 'px',
                         paddingTop: Math.max( (elemHeight / 10) ) + 'px'
                     };
 
                     // KPI Comparison
                     $scope.kpiComparisonStyle = {
-                        fontSize: Math.max( Math.min((elemWidth / 8)-0.5,(elemHeight / 7),$scope.get( 'comparisonFontSize' )), 6 ) + 'px',
+                        // fontSize: Math.max( Math.min((elemWidth / 8)-0.5,(elemHeight / 7),$scope.get( 'comparisonFontSize' )), 6 ) + 'px',
+                        fontSize: (elemHeight  * $scope.get( 'comparisonFontSize' ) / ($scope.get( 'titleFontSize' )+$scope.get( 'kpiFontSize' )+$scope.get( 'comparisonFontSize' )))-3 + 'px',
                         color: $scope.get( 'comparisonColor' )
 
                     };
 
                     // KPI Icon (not a style, but normal binding)
                     setKpiIcon();
-
+                    resizeFonts();
                 };
+
+                function resizeFonts() {
+                  var el, elements, _i, _len, _results;
+                  elements = $('.resize');
+                  console.log(elements);
+                  if (elements.length < 0) {
+                    return;
+                  }
+                  _results = [];
+                  for (_i = 0, _len = elements.length; _i < _len; _i++) {
+                    el = elements[_i];
+                    _results.push((function(el) {
+                      var resizeText, _results1;
+                      resizeText = function() {
+                        var elNewFontSize;
+                        elNewFontSize = (parseInt($(el).css('font-size').slice(0, -2)) - 1) + 'px';
+                        return $(el).css('font-size', elNewFontSize);
+                      };
+                      _results1 = [];
+                      while (el.scrollHeight > el.offsetHeight) {
+                        _results1.push(resizeText());
+                      }
+                      return _results1;
+                    })(el));
+                  }
+                  return _results;
+                }
 
                 function getKpiComparisonColor () {
 
